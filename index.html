@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本旅遊探索 | 夢幻和風假期</title>
+    <style>
+        :root {
+            --bg: linear-gradient(135deg, rgba(250, 238, 245, 0.95), rgba(235, 247, 255, 0.95));
+            --box: rgba(255, 255, 255, 0.48);
+            --text: #2b2b2b;
+            --accent: #d94f72;
+            --accent-soft: rgba(217, 79, 114, 0.16);
+            --shadow: rgba(14, 21, 40, 0.16);
+            --glass-border: rgba(255, 255, 255, 0.6);
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Microsoft JhengHei', 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.95), transparent 25%),
+                        radial-gradient(circle at bottom right, rgba(208, 87, 142, 0.14), transparent 35%),
+                        var(--bg);
+            color: var(--text);
+            backdrop-filter: blur(4px);
+        }
+        header {
+            position: relative;
+            padding: 60px 20px 40px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(34, 35, 60, 0.65), rgba(22, 23, 48, 0.35)),
+                        url('https://images.unsplash.com/photo-1549692520-acc6669e2f0c?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            color: white;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(21, 31, 57, 0.6), rgba(21, 31, 57, 0.18));
+        }
+        header .hero {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header h1 {
+            font-size: clamp(2.6rem, 5vw, 4.4rem);
+            line-height: 1.05;
+            margin-bottom: 16px;
+        }
+        header p {
+            font-size: 1.05rem;
+            opacity: 0.92;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        main {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 30px 20px 60px;
+        }
+        .tagline {
+            display: inline-flex;
+            padding: 8px 16px;
+            margin-bottom: 24px;
+            border-radius: 999px;
+            background: rgba(217, 79, 114, 0.12);
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        .section-subtitle {
+            color: #5f5f5f;
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+        .grid {
+            display: grid;
+            gap: 24px;
+        }
+        .cards {
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+        .card {
+            background: var(--box);
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(14, 21, 40, 0.15);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+        .card-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.16);
+        }
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .detail-section {
+            background: rgba(255, 255, 255, 0.32);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 32px;
+            padding: 32px;
+            box-shadow: 0 18px 50px rgba(14,21,40,0.08);
+            margin-top: 30px;
+            backdrop-filter: blur(12px);
+        }
+        .detail-section h3 {
+            margin-top: 0;
+            font-size: 2rem;
+        }
+        .detail-section p {
+            line-height: 1.8;
+            color: #4f4f4f;
+        }
+        .detail-section ul {
+            margin: 16px 0 0;
+            padding-left: 20px;
+            color: #4f4f4f;
+        }
+        .detail-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 18px;
+            color: var(--accent);
+            font-weight: 700;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.55);
+            padding: 10px 16px;
+            border-radius: 999px;
+            box-shadow: 0 10px 24px rgba(14,21,40,0.08);
+            backdrop-filter: blur(8px);
+        }
+        .card-body {
+            padding: 22px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+            backdrop-filter: blur(6px);
+        }
+        .card-body h3 {
+            margin: 0 0 10px;
+            font-size: 1.35rem;
+        }
+        .card-body p {
+            margin: 0 0 16px;
+            line-height: 1.7;
+            color: #555;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+        .highlight-bar {
+            margin: 40px 0 20px;
+            padding: 28px 30px;
+            background: rgba(255, 255, 255, 0.28);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 32px;
+            display: grid;
+            grid-template-columns: 1fr 200px;
+            gap: 20px;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 50px rgba(14, 21, 40, 0.08);
+        }
+        .highlight-bar strong {
+            display: block;
+            font-size: 1.45rem;
+            margin-bottom: 8px;
+        }
+        .highlight-bar button {
+            border: none;
+            border-radius: 999px;
+            padding: 14px 24px;
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .highlight-bar button:hover {
+            background: #c4385d;
+        }
+        .faq {
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.32);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            padding: 26px;
+            box-shadow: 0 20px 50px rgba(14, 21, 40, 0.1);
+            backdrop-filter: blur(12px);
+        }
+        .faq-item {
+            margin-bottom: 18px;
+            border-bottom: 1px solid #f1e3df;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h4 {
+            margin: 0;
+            font-size: 1.08rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+        }
+        .faq-item p {
+            margin: 0;
+            color: #5e5e5e;
+            line-height: 1.8;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-item.active p {
+            max-height: 240px;
+        }
+        .faq-item span {
+            font-size: 1.4rem;
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active span { transform: rotate(45deg); }
+        footer {
+            margin-top: 60px;
+            padding: 30px 0 20px;
+            text-align: center;
+            color: #6e6e6e;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 820px) {
+            .highlight-bar { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-nav">
+            <a href="#spotlight">熱門景點</a>
+            <a href="#tips">旅行小貼士</a>
+            <a href="#faq">常見問題</a>
+            <a href="#plan">立即規劃</a>
+        </div>
+        <div class="hero">
+            <span class="tagline">日本旅遊靈感</span>
+            <h1>一起出發！探索東京、京都、北海道的夢幻和風旅行</h1>
+            <p>從櫻花步道到霓虹城市，從溫泉鄉到滑雪勝地，這是一個為你精心規劃的日本旅遊網站，帶你玩得有溫度、吃得好、住得安心。</p>
+        </div>
+    </header>
+    <main>
+        <section id="spotlight">
+            <h2 class="section-title">熱門日本景點推薦</h2>
+            <p class="section-subtitle">精選東京、京都、北海道三大經典路線，讓行程更輕鬆、體驗更完整。</p>
+            <div class="grid cards">
+                <a class="card-link" href="#tokyo-detail">
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="東京晴空塔與城市夜景">
+                    <div class="card-body">
+                        <div class="badge">東京</div>
+                        <h3>東京：潮流與傳統交織</h3>
+                        <p>逛澀谷、人形町吃甜點、淺草寺祈福、晴空塔夜景，一站式感受最活力的都市魅力。</p>
+                    </div>
+                </article>
+            </a>
+                <a class="card-link" href="#kyoto-detail">
+                    <article class="card">
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80" alt="京都伏見稻荷千鳥居">
+                        <div class="card-body">
+                            <div class="badge">京都</div>
+                            <h3>京都：古都漫步和風慢活</h3>
+                            <p>在金閣寺、伏見稻荷大社和岚山竹林間穿梭，品味茶道和傳統日式旅館的靜謐。</p>
+                        </div>
+                    </article>
+                </a>
+                <a class="card-link" href="#hokkaido-detail">
+                    <article class="card">
+                        <img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=900&q=80" alt="北海道雪景與溫泉山景">
+                        <div class="card-body">
+                            <div class="badge">北海道</div>
+                            <h3>北海道：雪景、溫泉與浪漫美食</h3>
+                            <p>冬季滑雪、夏季花田、札幌美食與溫泉泡湯，北海道帶來四季分明的自然饗宴。</p>
+                        </div>
+                    </article>
+                </a>
+            </div>
+        </section>
+
+        <section class="highlight-bar" id="plan">
+            <div>
+                <strong>立即規劃你的日本行程</strong>
+                <p>輸入你的出發城市與旅遊天數，我們將為你推薦最適合的日本旅遊路線。</p>
+            </div>
+            <button onclick="alert('功能即將開放，敬請期待！')">開始規劃</button>
+        </section>
+
+        <section class="detail-section" id="tokyo-detail">
+            <h3>東京深度內頁</h3>
+            <p>東京融合傳統與潮流，從歷史神社到夜晚霓虹街頭，都是旅程最精彩的片段。推薦行程包含淺草寺參拜、秋葉原電器街、原宿潮玩探索與晴空塔觀景。</p>
+            <ul>
+                <li>淺草寺、仲見世商店街：體驗和風小吃與祈福文化。</li>
+                <li>新宿、涉谷：時尚購物與夜生活亮點。</li>
+                <li>築地市場、表參道：品嚐當日新鮮壽司與日式甜點。</li>
+            </ul>
+            <a class="detail-back" href="#spotlight">← 回到熱門景點</a>
+        </section>
+
+        <section class="detail-section" id="kyoto-detail">
+            <h3>京都深度內頁</h3>
+            <p>京都是日式古都典範，建議安排至少兩天，從千鳥居到古寺庭園、再到傳統茶屋和風旅館，沉浸在靜謐與文化裡。</p>
+            <ul>
+                <li>伏見稻荷大社千鳥居：體驗經典神社參拜步道。</li>
+                <li>金閣寺、銀閣寺：欣賞典雅的日式庭園與建築。</li>
+                <li>祇園花見小路：遇見和服漫步與茶道體驗。</li>
+            </ul>
+            <a class="detail-back" href="#spotlight">← 回到熱門景點</a>
+        </section>
+
+        <section class="detail-section" id="hokkaido-detail">
+            <h3>北海道深度內頁</h3>
+            <p>北海道四季各有不同魅力，冬季滑雪與溫泉、夏季花田與海鮮，還有美食與自然景觀，是自然系旅客的最佳選擇。</p>
+            <ul>
+                <li>札幌美食：拉麵、海鮮丼與洋菓子甜點。</li>
+                <li>富良野花田：夏季薰衣草與花海拍照聖地。</li>
+                <li>登別溫泉、函館夜景：放鬆湯泉與浪漫夜色。</li>
+            </ul>
+            <a class="detail-back" href="#spotlight">← 回到熱門景點</a>
+        </section>
+
+        <section id="tips">
+            <h2 class="section-title">旅行小貼士</h2>
+            <p class="section-subtitle">從交通券到美食推薦，這些實用建議讓你的日本旅行更順利。</p>
+            <div class="grid cards">
+                <article class="card">
+                    <div class="card-body">
+                        <h3>交通先攻略</h3>
+                        <p>購入JR Pass、Suica卡或IC卡，搭乘新幹線和地鐵更加輕鬆，省下排隊和買票時間。</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-body">
+                        <h3>季節選擇很重要</h3>
+                        <p>春櫻、夏祭、秋楓、冬雪，每個季節都有不同的風景與節慶，提早安排，體驗最美當季。</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-body">
+                        <h3>美食必吃</h3>
+                        <p>壽司、拉麵、和牛、甜點、居酒屋小菜，讓每一餐都成為旅程回憶的一部分。</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="faq" id="faq">
+            <h2 class="section-title">常見問題</h2>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h4>需要申請日本簽證嗎？ <span>＋</span></h4>
+                <p>大多數台灣旅客可免簽入境日本 90 天，以觀光為主要目的即可，但仍需攜帶返程機票與住宿證明。</p>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h4>日本使用現金還是信用卡？ <span>＋</span></h4>
+                <p>日本現金仍相當普及，建議同時攜帶日幣與信用卡。小店與傳統市場多數只收現金。</p>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h4>如何查詢當地天氣與交通？ <span>＋</span></h4>
+                <p>可下載日本旅遊專用 App、Google Maps 及官網查詢交通狀況與天氣預報，並留意節慶或大型活動影響。</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        © 2026 日本旅遊探索 | 你的夢幻和風之旅從這裡出發
+    </footer>
+
+    <script>
+        function toggleFaq(item) {
+            item.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
